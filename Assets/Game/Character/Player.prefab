@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5930153616400794815}
   - component: {fileID: 5930153616400794809}
   - component: {fileID: 5930153616400794813}
-  - component: {fileID: 1197007328}
   - component: {fileID: 5930153616400794812}
   - component: {fileID: 1197007329}
+  - component: {fileID: 1197007328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -101,26 +101,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &1197007328
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930153616400794811}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  m_Controller: {fileID: 9100000, guid: 624c35ca9242155448d1c685372776ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5930153616400794812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +125,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b436905a72ebf42a7d8a6d0cf5731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1197007328
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930153616400794811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+  m_Controller: {fileID: 9100000, guid: 624c35ca9242155448d1c685372776ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2764571196620139674
 PrefabInstance:
   m_ObjectHideFlags: 0
