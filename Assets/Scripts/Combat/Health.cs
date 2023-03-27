@@ -6,10 +6,25 @@ using System.Threading.Tasks;
 
 namespace RPG.Combat {
     public class Health : MonoBehaviour {
-        [SerializeField] float health = 100f;
+
+        [SerializeField] float healthPoints = 100f;
+        Animator _animator;
+        private const string Dead = "dead";
+        public bool isDead = false;
         public void TakeDamage(float damage) {
-             health = MathF.Max(health - damage, 0);
-             print(health);
+             healthPoints = MathF.Max(healthPoints - damage, 0);
+             if (healthPoints == 0) {
+                 Death();
+             }
         } 
-    }
+
+        public void Death() {
+                if (isDead) return;
+
+                Debug.Log("Death come uppon you..");
+                isDead = true;
+                GetComponent<Animator>().SetTrigger(Dead);
+            }
+        }
 }
+

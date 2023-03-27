@@ -9,7 +9,6 @@ namespace RPG.Combat {
         [SerializeField] float timeBetweenAttacks = 1f;
         Transform target;
         Animator _animator;
-
         float timeSinceLastAttack = 0;
         private void Start() {
             _animator = GetComponent<Animator>();
@@ -25,7 +24,6 @@ namespace RPG.Combat {
                 AttackBehaviour();
             }
         }
-
         private void AttackBehaviour() {
             timeSinceLastAttack += Time.deltaTime;
             if (timeSinceLastAttack > timeBetweenAttacks) {
@@ -36,8 +34,7 @@ namespace RPG.Combat {
         }
 
         // Animation event 
-        void Hit()         {
-            Debug.Log("Hit hit!");
+        void Hit() {
             Health healthComponent = target.GetComponent<Health>();
             healthComponent.TakeDamage(weaponDamage);
         }

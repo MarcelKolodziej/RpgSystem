@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5930153616400794813, guid: 256d49980d9d2284fa9ad59833336b9d, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5930153616400794815, guid: 256d49980d9d2284fa9ad59833336b9d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -119,3 +123,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5930153616400794815, guid: 256d49980d9d2284fa9ad59833336b9d, type: 3}
   m_PrefabInstance: {fileID: 630868812202869838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6524986458148225269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5930153616400794811, guid: 256d49980d9d2284fa9ad59833336b9d, type: 3}
+  m_PrefabInstance: {fileID: 630868812202869838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1286570737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524986458148225269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494f881d9b20d50438c92b730b680918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &1286570738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524986458148225269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e4dba57da09e041bdbcceeb199e3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRange: 2
+  weaponDamage: 5
+  timeBetweenAttacks: 1
