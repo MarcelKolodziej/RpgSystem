@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.Combat;
+using RPG.Core;
 
 namespace RPG.Movement {
-public class Mover : MonoBehaviour {
+public class Mover : MonoBehaviour, IAction {
 
     NavMeshAgent navMeshAgent;
+    Animator animator;
     private void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update() {
         UpdateAnimator();
     }
 
-    public void StartMoveAction(Vector3 destination)
-    {
+    public void StartMoveAction(Vector3 destination) {
         // When we start Move we cancel fighting
-        GetComponent<Fighter>().Cancel();
+        GetComponent<ActionScheduler>().StartAction(this);
         MoveTo(destination);
     }
      public void MoveTo(Vector3 destination) {
@@ -27,16 +28,14 @@ public class Mover : MonoBehaviour {
         navMeshAgent.isStopped = false;
     }
 
-    public void Stop() {
+    public void Cancel() {
           navMeshAgent.isStopped = true;
     }
-
     private void UpdateAnimator() {
         Vector3 velocity = navMeshAgent.velocity;
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);
         float speed = localVelocity.z;
-        GetComponent<Animator>().SetFloat("walkingSpeed", speed);
-    
+        animator.SetFloat("walkingSpeed", speed);
     }
 }    
 
