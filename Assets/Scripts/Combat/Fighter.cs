@@ -22,10 +22,12 @@ namespace RPG.Combat {
             }
             else {
                 GetComponent<Mover>().Cancel();
+                
                 AttackBehaviour();
             }
         }
         private void AttackBehaviour() {
+            transform.LookAt(target.transform);
             timeSinceLastAttack += Time.deltaTime;
             if (timeSinceLastAttack > timeBetweenAttacks) {
                 // This will trigger the hit event.
@@ -33,7 +35,6 @@ namespace RPG.Combat {
                 timeSinceLastAttack = 0f;
             }
         }
-
         // Animation event 
         void Hit() {
             target.TakeDamage(weaponDamage);
@@ -50,9 +51,17 @@ namespace RPG.Combat {
         public void Cancel() {
             _animator.SetTrigger("stopAttack");
             target = null;
+        }
+
+        public bool CanAttack()
+        {
+            if (target != null && !target.isDead) {
+                return true;
+            }
+            return false;
 
         }
 
-    }
 
+    }
 }

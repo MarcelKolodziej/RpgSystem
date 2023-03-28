@@ -7,11 +7,12 @@ using RPG.Core;
 namespace RPG.Movement {
 public class Mover : MonoBehaviour, IAction {
 
+    [SerializeField] Transform target;
     NavMeshAgent navMeshAgent;
-    Animator animator;
+    Animator _animator;
     private void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update() {
@@ -22,7 +23,6 @@ public class Mover : MonoBehaviour, IAction {
         // When we start Move we cancel fighting
         GetComponent<ActionScheduler>().StartAction(this);
         MoveTo(destination);
-        animator.SetTrigger("stopAttack");
     }
      public void MoveTo(Vector3 destination) {
         navMeshAgent.destination = destination;
@@ -36,7 +36,7 @@ public class Mover : MonoBehaviour, IAction {
         Vector3 velocity = navMeshAgent.velocity;
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);
         float speed = localVelocity.z;
-        animator.SetFloat("walkingSpeed", speed);
+        _animator.SetFloat("walkingSpeed", speed);
     }
 }    
 
