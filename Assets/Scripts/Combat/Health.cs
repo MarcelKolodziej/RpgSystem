@@ -17,6 +17,9 @@ namespace RPG.Combat {
                  Death();
              }
         } 
+        public bool IsDead() {
+            return isDead;
+        }
 
         public void Death() {
                 if (isDead) return;
@@ -25,6 +28,7 @@ namespace RPG.Combat {
                 isDead = true;
                 GetComponent<Animator>().SetTrigger(Dead);
             }
-        }
+        
+    }
 }
 

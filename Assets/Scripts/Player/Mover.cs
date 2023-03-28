@@ -22,6 +22,7 @@ public class Mover : MonoBehaviour, IAction {
         // When we start Move we cancel fighting
         GetComponent<ActionScheduler>().StartAction(this);
         MoveTo(destination);
+        animator.SetTrigger("stopAttack");
     }
      public void MoveTo(Vector3 destination) {
         navMeshAgent.destination = destination;
