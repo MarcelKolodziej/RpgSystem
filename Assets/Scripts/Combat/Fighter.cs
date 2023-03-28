@@ -10,34 +10,44 @@ namespace RPG.Combat {
         Health target;
         Animator _animator;
         float timeSinceLastAttack = 0;
-        private void Start() {
+        private void Awake() {
             _animator = GetComponent<Animator>();
         }
-        private void Update() {
+        private void Update()
+        {
+            timeSinceLastAttack += Time.deltaTime;
+
             if (target == null) return;
             if (target.IsDead()) return;
 
-            if (!GetIsInRange()) {
+            if (!GetIsInRange())
+            {
                 GetComponent<Mover>().MoveTo(target.transform.position);
             }
-            else {
+            else
+            {
                 GetComponent<Mover>().Cancel();
-                
                 AttackBehaviour();
             }
         }
         private void AttackBehaviour() {
             transform.LookAt(target.transform);
-            timeSinceLastAttack += Time.deltaTime;
             if (timeSinceLastAttack > timeBetweenAttacks) {
                 // This will trigger the hit event.
-                _animator.SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0f;
             }
         }
         // Animation event 
         void Hit() {
+            if(target == null) { return; }
             target.TakeDamage(weaponDamage);
+        }
+
+        private void TriggerAttack()
+        {
+            _animator.ResetTrigger("stopAttack");
+            _animator.SetTrigger("attack");
         }
         private bool GetIsInRange() {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
@@ -48,20 +58,22 @@ namespace RPG.Combat {
             target = combatTarget.GetComponent<Health>();
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) { return false; }
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
         public void Cancel() {
-            _animator.SetTrigger("stopAttack");
+            StopAttack();
             target = null;
         }
 
-        public bool CanAttack()
+        private void StopAttack()
         {
-            if (target != null && !target.isDead) {
-                return true;
-            }
-            return false;
-
+            _animator.ResetTrigger("attack");
+            _animator.SetTrigger("stopAttack");
         }
-
-
     }
+    
 }

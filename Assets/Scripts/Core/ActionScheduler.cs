@@ -4,18 +4,20 @@ using UnityEngine;
 
     /* "If I'm working on a new IAction, then I need to cancel whatever IAction may be going on". */
 
-namespace RPG.Core {
-    public class ActionScheduler : MonoBehaviour {
-
+namespace RPG.Core
+{
+    public class ActionScheduler : MonoBehaviour
+    {
         IAction currentAction;
-        public void StartAction(IAction action) {
 
+        public void StartAction(IAction action)
+        {
             if (currentAction == action) return;
-            if (currentAction != null) 
+            if (currentAction != null)
             {
                 currentAction.Cancel();
             }
-                currentAction = action;
-            }
+            currentAction = action;
+        }
     }
 }
