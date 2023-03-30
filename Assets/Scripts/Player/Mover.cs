@@ -10,12 +10,16 @@ public class Mover : MonoBehaviour, IAction {
     [SerializeField] Transform target;
     NavMeshAgent navMeshAgent;
     Animator _animator;
+    Health health;
     private void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
     }
 
     private void Update() {
+        navMeshAgent.enabled = !health.IsDead();
+        
         UpdateAnimator();
     }
 

@@ -122,21 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494f881d9b20d50438c92b730b680918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
+  healthPoints: 20
   isDead: 0
---- !u!114 &4729995260501095819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6524986458148225269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b533290db49ec9e44abc2aa3d877580e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseDistance: 10
 --- !u!114 &2426690987873014118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +139,19 @@ MonoBehaviour:
   weaponRange: 2
   weaponDamage: 5
   timeBetweenAttacks: 1
+--- !u!114 &4729995260501095819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524986458148225269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b533290db49ec9e44abc2aa3d877580e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 10
 --- !u!1001 &4896144505796777921
 PrefabInstance:
   m_ObjectHideFlags: 0

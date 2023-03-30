@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RPG.Combat {
+namespace RPG.Core {
     public class Health : MonoBehaviour {
 
         [SerializeField] float healthPoints = 100f;
@@ -27,6 +27,7 @@ namespace RPG.Combat {
                 Debug.Log("Death come uppon you..");
                 isDead = true;
                 GetComponent<Animator>().SetTrigger(Dead);
+                GetComponent<ActionScheduler>().CancelCurrentAction();
             }
         
     }
