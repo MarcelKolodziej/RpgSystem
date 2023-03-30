@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
 using RPG.Combat;
+using RPG.Movement;
 using UnityEngine.AI;
 
 
@@ -12,13 +13,21 @@ namespace RPG.Control {
         float distanceToPlayer; 
         GameObject player;
         Fighter fighter;
-
         Health health;
+
+        Mover mover;
+
+        Vector3 guardLocation;
 
         private void Awake() {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+        }
+
+        private void Start() {
+            guardLocation = transform.position;
         }
         void Update() {
             if (health.IsDead()) return;
@@ -32,7 +41,7 @@ namespace RPG.Control {
             {
                 fighter.Attack(player);
             } else {
-                fighter.Cancel();
+                mover.StartMoveAction(guardLocation);
             }
         }
         private bool DistanceToPlayer() {
@@ -41,6 +50,11 @@ namespace RPG.Control {
             }
 
 
+        // Called by Unity, when selected
+        private void OnDrawGizmosSelected() {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
 
     }
 
