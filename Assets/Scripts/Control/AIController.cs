@@ -5,18 +5,22 @@ using RPG.Core;
 using RPG.Combat;
 using RPG.Movement;
 using UnityEngine.AI;
-
+using System;
 
 namespace RPG.Control {
     public class AIController : MonoBehaviour {
         [SerializeField] float chaseDistance = 10f;
+        [SerializeField] float suspictionStateTimer = 3f;
+        [SerializeField] float wayPointTolerance = 3f;
+        [SerializeField] PatrolPath patrolPath;
         float distanceToPlayer; 
+        float timeSinceLastSawPlayer = Mathf.Infinity;
+
+        int currentWayPointIndex = 0;
         GameObject player;
         Fighter fighter;
         Health health;
-
         Mover mover;
-
         Vector3 guardLocation;
 
         private void Awake() {
@@ -24,26 +28,76 @@ namespace RPG.Control {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
+
+            guardLocation = transform.position;
+
         }
 
-        private void Start() {
-            guardLocation = transform.position;
-        }
+   
+   
         void Update() {
             if (health.IsDead()) return;
 
-            ChaseThePlayer();
+            if (DistanceToPlayer() && fighter.CanAttack(player))
+            {
+                timeSinceLastSawPlayer = 0f;
+                AttackBehaviour();
+            }
+            else if(timeSinceLastSawPlayer < suspictionStateTimer)
+            {
+                Debug.Log(timeSinceLastSawPlayer);
+                SuspicionBehaviour();
+            }
+            else
+            {
+                Debug.Log("Patrolling behaviour");
+                PatrollingBehaviour();
+            }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
+        }
+        private void AttackBehaviour()
+        {
+            fighter.Attack(player);
         }
 
-        private void ChaseThePlayer()
-        {
-            if (DistanceToPlayer() && fighter.CanAttack(player)) 
-            {
-                fighter.Attack(player);
-            } else {
-                mover.StartMoveAction(guardLocation);
-            }
+        private void PatrollingBehaviour() {
+            Vector3 nextPosition = guardLocation;
+
+            if (patrolPath != null) 
+                {
+                    if (AtWaypoint())
+                    {
+                        CycleWaypoint();
+                    }
+                    nextPosition = GetCurrentWaypoint();
+              }
+            Debug.Log(nextPosition);
+            mover.StartMoveAction(nextPosition);
         }
+
+        private Vector3 GetCurrentWaypoint()
+        {
+            return patrolPath.GetWaypoint(currentWayPointIndex);
+        }
+
+        private bool AtWaypoint()
+        {
+            float distanceToWayPoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
+            return distanceToWayPoint < wayPointTolerance;
+            
+        }
+        private void CycleWaypoint()
+        {
+            currentWayPointIndex = patrolPath.GetNextIndex(currentWayPointIndex);
+        }
+
+
+        private void SuspicionBehaviour()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
         private bool DistanceToPlayer() {
                 float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
                 return distanceToPlayer < chaseDistance;

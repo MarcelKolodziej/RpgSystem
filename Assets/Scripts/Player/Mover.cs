@@ -36,6 +36,10 @@ public class Mover : MonoBehaviour, IAction {
     public void Cancel() {
           navMeshAgent.isStopped = true;
     }
+
+    public void Running() {
+        navMeshAgent.speed = 10f;
+    }
     private void UpdateAnimator() {
         Vector3 velocity = navMeshAgent.velocity;
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);

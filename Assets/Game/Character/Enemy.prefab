@@ -152,6 +152,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 10
+  suspictionStateTimer: 3
+--- !u!114 &4856929110125223338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524986458148225269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b90107531923d42849aac22bede810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4896144505796777921
 PrefabInstance:
   m_ObjectHideFlags: 0

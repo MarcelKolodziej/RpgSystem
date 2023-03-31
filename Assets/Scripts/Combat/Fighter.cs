@@ -9,7 +9,7 @@ namespace RPG.Combat {
         [SerializeField] float timeBetweenAttacks = 1f;
         Health target;
         Animator _animator;
-        float timeSinceLastAttack = 0;
+        float timeSinceLastAttack = Mathf.Infinity;
         private void Awake() {
             _animator = GetComponent<Animator>();
         }
