@@ -30,11 +30,7 @@ namespace RPG.Control {
             mover = GetComponent<Mover>();
 
             guardLocation = transform.position;
-
         }
-
-   
-   
         void Update() {
             if (health.IsDead()) return;
 
@@ -59,10 +55,13 @@ namespace RPG.Control {
         private void AttackBehaviour()
         {
             fighter.Attack(player);
+            Debug.Log("Attacking player");
+            mover.Running();
         }
 
         private void PatrollingBehaviour() {
             Vector3 nextPosition = guardLocation;
+            mover.Walking();
 
             if (patrolPath != null) 
                 {

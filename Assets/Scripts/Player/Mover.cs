@@ -38,7 +38,11 @@ public class Mover : MonoBehaviour, IAction {
     }
 
     public void Running() {
-        navMeshAgent.speed = 10f;
+        navMeshAgent.speed = 5f;
+    }
+
+     public void Walking() {
+        navMeshAgent.speed = 2f;
     }
     private void UpdateAnimator() {
         Vector3 velocity = navMeshAgent.velocity;
