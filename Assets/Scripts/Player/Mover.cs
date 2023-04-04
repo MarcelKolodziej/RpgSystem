@@ -8,6 +8,8 @@ namespace RPG.Movement {
 public class Mover : MonoBehaviour, IAction {
 
     [SerializeField] Transform target;
+    [SerializeField] float speedFraction = 6f;
+    [SerializeField] float maxSpeed = 6f;
     NavMeshAgent navMeshAgent;
     Animator _animator;
     Health health;
@@ -23,13 +25,14 @@ public class Mover : MonoBehaviour, IAction {
         UpdateAnimator();
     }
 
-    public void StartMoveAction(Vector3 destination) {
+    public void StartMoveAction(Vector3 destination, float speedFraction) {
         // When we start Move we cancel fighting
         GetComponent<ActionScheduler>().StartAction(this);
-        MoveTo(destination);
+        MoveTo(destination, speedFraction);
     }
-     public void MoveTo(Vector3 destination) {
+     public void MoveTo(Vector3 destination, float speedFraction) {
         navMeshAgent.destination = destination;
+        navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
         navMeshAgent.isStopped = false;
     }
 
@@ -37,13 +40,13 @@ public class Mover : MonoBehaviour, IAction {
           navMeshAgent.isStopped = true;
     }
 
-    public void Running() {
-        navMeshAgent.speed = 5f;
-    }
+    // public void Running() {
+    //     navMeshAgent.speed = 5f;
+    // }
 
-     public void Walking() {
-        navMeshAgent.speed = 2f;
-    }
+    //  public void Walking() {
+    //     navMeshAgent.speed = 2f;
+    // }
     private void UpdateAnimator() {
         Vector3 velocity = navMeshAgent.velocity;
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);

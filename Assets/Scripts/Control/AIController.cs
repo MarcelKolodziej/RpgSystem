@@ -13,6 +13,9 @@ namespace RPG.Control {
         [SerializeField] float suspictionStateTimer = 3f;
         [SerializeField] float wayPointTolerance = 3f;
         [SerializeField] PatrolPath patrolPath;
+
+        [Range(0, 1)]
+        [SerializeField] float patrolSpeedFraction = 0.2f;
         float distanceToPlayer; 
         float timeSinceLastSawPlayer = Mathf.Infinity;
 
@@ -56,12 +59,12 @@ namespace RPG.Control {
         {
             fighter.Attack(player);
             Debug.Log("Attacking player");
-            mover.Running();
+            // mover.Running();
         }
 
         private void PatrollingBehaviour() {
             Vector3 nextPosition = guardLocation;
-            mover.Walking();
+           // mover.Walking();
 
             if (patrolPath != null) 
                 {
@@ -72,7 +75,7 @@ namespace RPG.Control {
                     nextPosition = GetCurrentWaypoint();
               }
             Debug.Log(nextPosition);
-            mover.StartMoveAction(nextPosition);
+            mover.StartMoveAction(nextPosition, patrolSpeedFraction);
         }
 
         private Vector3 GetCurrentWaypoint()

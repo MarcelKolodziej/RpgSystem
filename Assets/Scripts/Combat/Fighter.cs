@@ -22,7 +22,7 @@ namespace RPG.Combat {
 
             if (!GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position);
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
             {
@@ -56,6 +56,7 @@ namespace RPG.Combat {
         public void Attack(GameObject combatTarget) {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
+
         }
 
         public bool CanAttack(GameObject combatTarget)
