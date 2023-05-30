@@ -49,7 +49,7 @@ namespace RPG.Control {
             }
             else
             {
-                Debug.Log("Patrolling behaviour");
+                //Debug.Log("Patrolling behaviour");
                 PatrollingBehaviour();
             }
 
@@ -74,7 +74,7 @@ namespace RPG.Control {
                     }
                     nextPosition = GetCurrentWaypoint();
               }
-            Debug.Log(nextPosition);
+           // Debug.Log(nextPosition);
             mover.StartMoveAction(nextPosition, patrolSpeedFraction);
         }
 
