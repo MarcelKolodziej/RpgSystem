@@ -10,13 +10,15 @@ using System;
 namespace RPG.Control {
     public class AIController : MonoBehaviour {
         [SerializeField] float chaseDistance = 10f;
-        [SerializeField] float suspictionStateTimer = 5f;
-        [SerializeField] float patrollingPointTimer = 2f;
+        [SerializeField] float suspictionStateTimer = 3f;
         [SerializeField] float wayPointTolerance = 3f;
         [SerializeField] PatrolPath patrolPath;
+
+        [Range(0, 1)]
+        [SerializeField] float patrolSpeedFraction = 0.2f;
         float distanceToPlayer; 
         float timeSinceLastSawPlayer = Mathf.Infinity;
-        float timeSinceLastCheckpoint = Mathf.Infinity;
+
         int currentWayPointIndex = 0;
         GameObject player;
         Fighter fighter;
@@ -32,61 +34,48 @@ namespace RPG.Control {
 
             guardLocation = transform.position;
         }
-   
-        void Update()
-        {
+        void Update() {
             if (health.IsDead()) return;
 
             if (DistanceToPlayer() && fighter.CanAttack(player))
             {
                 timeSinceLastSawPlayer = 0f;
-                timeSinceLastCheckpoint = 0f;
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawPlayer < suspictionStateTimer)
+            else if(timeSinceLastSawPlayer < suspictionStateTimer)
             {
                 Debug.Log(timeSinceLastSawPlayer);
                 SuspicionBehaviour();
             }
             else
             {
-                Debug.Log("Patrolling behaviour");
+                //Debug.Log("Patrolling behaviour");
                 PatrollingBehaviour();
             }
 
-            Timers();
-        }
-
-        private void Timers()
-        {
             timeSinceLastSawPlayer += Time.deltaTime;
-            timeSinceLastCheckpoint += Time.deltaTime;
         }
-
         private void AttackBehaviour()
         {
-            timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+            Debug.Log("Attacking player");
+            // mover.Running();
         }
 
         private void PatrollingBehaviour() {
             Vector3 nextPosition = guardLocation;
+           // mover.Walking();
 
             if (patrolPath != null) 
                 {
                     if (AtWaypoint())
                     {
-                        timeSinceLastCheckpoint = 0f;
                         CycleWaypoint();
                     }
                     nextPosition = GetCurrentWaypoint();
               }
-            
-            if(timeSinceLastCheckpoint < patrollingPointTimer)
-            {
-                mover.StartMoveAction(nextPosition);
-                timeSinceLastCheckpoint += Time.deltaTime;
-            }
+           // Debug.Log(nextPosition);
+            mover.StartMoveAction(nextPosition, patrolSpeedFraction);
         }
 
         private Vector3 GetCurrentWaypoint()
@@ -98,19 +87,24 @@ namespace RPG.Control {
         {
             float distanceToWayPoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
             return distanceToWayPoint < wayPointTolerance;
+            
         }
         private void CycleWaypoint()
         {
             currentWayPointIndex = patrolPath.GetNextIndex(currentWayPointIndex);
         }
+
+
         private void SuspicionBehaviour()
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
+
         private bool DistanceToPlayer() {
                 float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
                 return distanceToPlayer < chaseDistance;
             }
+
 
         // Called by Unity, when selected
         private void OnDrawGizmosSelected() {
