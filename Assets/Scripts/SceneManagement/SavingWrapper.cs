@@ -14,7 +14,8 @@ public class SavingWrapper : MonoBehaviour
         Load();
       }   
          if(Input.GetKeyDown(KeyCode.S)) {
-        Save();
+         Console.WriteLine("game Saved");
+         Save();
       }   
     }
         private void Load() {
