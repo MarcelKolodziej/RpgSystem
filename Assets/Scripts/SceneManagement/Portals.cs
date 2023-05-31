@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 namespace RPG.SceneManagement {
+
+    // TODO: bug fadeOut na scenkach.
     public class Portals : MonoBehaviour {
         enum DestinationIdentifier 
         {
