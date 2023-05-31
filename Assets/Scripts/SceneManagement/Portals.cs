@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 namespace RPG.SceneManagement {
-    public class Portals : MonoBehaviour
-    {
-
-        enum DestinationIdentifier
+    public class Portals : MonoBehaviour {
+        enum DestinationIdentifier 
         {
             A, B, C, D, E, F, G
         }
     [SerializeField] int sceneToLoad = -1;
     [SerializeField] Transform spawnPoint;
-
     [SerializeField] DestinationIdentifier destination;
+    [SerializeField]  float fadeOutTime = 1f;
+    [SerializeField]  float fadeInTime = 2f;
+    [SerializeField]  float fadeWaitTime = 0.5f;
         private void OnTriggerEnter(Collider other) {
             if(other.tag == "Player") {
                 StartCoroutine(Transition());
-                Debug.Log("Scene Loanging...");
+                Debug.Log("Scene Loanding...");
             }
         }
 
@@ -30,12 +30,19 @@ namespace RPG.SceneManagement {
                 Debug.LogError("Scene to Load not set.");
                 yield break;
             }
-            Fader fader = FindObjectOfType<Fader>();
             DontDestroyOnLoad(gameObject);
+
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return fader.FadeOut(fadeOutTime);
+
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
             Portals otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
+            yield return new WaitForSeconds(fadeWaitTime);
+            yield return fader.FadeIn(fadeInTime);
 
             Debug.Log("Scene Loaded");
             Destroy(gameObject);

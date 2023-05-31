@@ -935,6 +935,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: fadeInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: fadeOutTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
 --- !u!4 &1634880757 stripped
