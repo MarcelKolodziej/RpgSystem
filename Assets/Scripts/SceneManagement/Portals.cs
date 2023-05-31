@@ -4,60 +4,59 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
-public class Portals : MonoBehaviour
-{
-
-    enum DestinationIdentifier
+namespace RPG.SceneManagement {
+    public class Portals : MonoBehaviour
     {
-        A, B, C, D, E, F, G
-    }
-   [SerializeField] int sceneToLoad = -1;
-   [SerializeField] Transform spawnPoint;
 
-   [SerializeField] DestinationIdentifier destination;
-
-
-
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player") {
-            StartCoroutine(Transition());
-             Debug.Log("Scene Loanging...");
-        }
-    }
-
-    private IEnumerator Transition()
-    {
-        if (sceneToLoad < 0)
+        enum DestinationIdentifier
         {
-            Debug.LogError("Scene to Load not set.");
-            yield break;
+            A, B, C, D, E, F, G
         }
-        DontDestroyOnLoad(gameObject);
-        yield return SceneManager.LoadSceneAsync(sceneToLoad);
+    [SerializeField] int sceneToLoad = -1;
+    [SerializeField] Transform spawnPoint;
 
-        Portals otherPortal = GetOtherPortal();
-        UpdatePlayer(otherPortal);
-
-        Debug.Log("Scene Loaded");
-        Destroy(gameObject);
-    }
-
-    private Portals GetOtherPortal() {
-        foreach (Portals portal in FindObjectsOfType<Portals>()) {
-            if (portal == this) continue;
-            if (portal.destination != destination) continue;
-            print(destination);
-
-            return portal;
+    [SerializeField] DestinationIdentifier destination;
+        private void OnTriggerEnter(Collider other) {
+            if(other.tag == "Player") {
+                StartCoroutine(Transition());
+                Debug.Log("Scene Loanging...");
+            }
         }
 
-        return null;
-    }
+        private IEnumerator Transition()
+        {
+            if (sceneToLoad < 0)
+            {
+                Debug.LogError("Scene to Load not set.");
+                yield break;
+            }
+            Fader fader = FindObjectOfType<Fader>();
+            DontDestroyOnLoad(gameObject);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
-    private void UpdatePlayer(Portals otherPortal)
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
-        player.transform.rotation = otherPortal.spawnPoint.rotation;
+            Portals otherPortal = GetOtherPortal();
+            UpdatePlayer(otherPortal);
+
+            Debug.Log("Scene Loaded");
+            Destroy(gameObject);
+        }
+
+        private Portals GetOtherPortal() {
+            foreach (Portals portal in FindObjectsOfType<Portals>()) {
+                if (portal == this) continue;
+                if (portal.destination != destination) continue;
+                print(destination);
+
+                return portal;
+            }
+            return null;
+        }
+
+        private void UpdatePlayer(Portals otherPortal)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
+            player.transform.rotation = otherPortal.spawnPoint.rotation;
+        }
     }
 }
