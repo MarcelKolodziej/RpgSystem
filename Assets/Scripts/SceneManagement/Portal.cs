@@ -7,10 +7,10 @@ using UnityEngine.AI;
 namespace RPG.SceneManagement {
 
     // TODO: bug fadeOut na scenkach.\
-    public class Portals : MonoBehaviour {
+    public class Portal : MonoBehaviour {
         enum DestinationIdentifier 
         {
-            A, B, C, D, E, F, G
+            A, B, C, D, E
         }
     [SerializeField] int sceneToLoad = -1;
     [SerializeField] Transform spawnPoint;
@@ -40,7 +40,7 @@ namespace RPG.SceneManagement {
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
-            Portals otherPortal = GetOtherPortal();
+            Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
             yield return new WaitForSeconds(fadeWaitTime);
@@ -50,8 +50,8 @@ namespace RPG.SceneManagement {
             Destroy(gameObject);
         }
 
-        private Portals GetOtherPortal() {
-            foreach (Portals portal in FindObjectsOfType<Portals>()) {
+        private Portal GetOtherPortal() {
+            foreach (Portal portal in FindObjectsOfType<Portal>()) {
                 if (portal == this) continue;
                 if (portal.destination != destination) continue;
                 print(destination);
@@ -61,7 +61,7 @@ namespace RPG.SceneManagement {
             return null;
         }
 
-        private void UpdatePlayer(Portals otherPortal)
+        private void UpdatePlayer(Portal otherPortal)
         {
             GameObject player = GameObject.FindWithTag("Player");
             player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);

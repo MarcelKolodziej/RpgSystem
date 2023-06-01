@@ -1134,7 +1134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579618468}
   m_LocalRotation: {x: -0.34503275, y: 0.030016357, z: -0.060368367, w: -0.9361662}
-  m_LocalPosition: {x: 23.598236, y: 8.853207, z: -144.91232}
+  m_LocalPosition: {x: 23.601685, y: 8.853527, z: -144.91196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3117,7 +3117,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441665560255110302, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: destination
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: fadeInTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: destination
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: fadeOutTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880897202205643737, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: fadeWaitTime
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4997360681471873370, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3791,7 +3807,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066677772}
   m_LocalRotation: {x: -0.34503275, y: 0.030016357, z: -0.060368367, w: -0.9361662}
-  m_LocalPosition: {x: 23.598236, y: 8.853207, z: -144.91232}
+  m_LocalPosition: {x: 23.601685, y: 8.853527, z: -144.91196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
