@@ -49,6 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: 0
   spawnPoint: {fileID: 7247027059500094554}
+  destination: 1
+  fadeOutTime: 1
+  fadeInTime: 2
+  fadeWaitTime: 0.5
 --- !u!65 &8916894548718092017
 BoxCollider:
   m_ObjectHideFlags: 0

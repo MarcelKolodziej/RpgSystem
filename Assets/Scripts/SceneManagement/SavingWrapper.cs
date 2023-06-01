@@ -10,23 +10,23 @@ public class SavingWrapper : MonoBehaviour
     const string defaultSaveFile = "save";
     void Update()
     {
-      if(Input.GetKeyDown(KeyCode.L)) {
-        Load();
+          if(Input.GetKeyDown(KeyCode.L)) {
+          Load();
       }   
          if(Input.GetKeyDown(KeyCode.S)) {
          Console.WriteLine("game Saved");
          Save();
       }   
     }
-        private void Load() {
-            // call a saving system load
-            GetComponent<SavingSystem>().Load(defaultSaveFile);
-        }
-
-        private void Save() {
+        public void Save() {
             // call a saving system save
             GetComponent<SavingSystem>().Save(defaultSaveFile);
         }
+        public void Load() {
+            // call a saving system load
+            GetComponent<SavingSystem>().Load(defaultSaveFile);
+        }
     }
+
 
 }
