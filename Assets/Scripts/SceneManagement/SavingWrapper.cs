@@ -4,29 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
 
-namespace RPG.SceneManagement {
-public class SavingWrapper : MonoBehaviour
+namespace RPG.SceneManagement
 {
-    const string defaultSaveFile = "save";
-    void Update()
+    public class SavingWrapper : MonoBehaviour
     {
-          if(Input.GetKeyDown(KeyCode.L)) {
-          Load();
-      }   
-         if(Input.GetKeyDown(KeyCode.S)) {
-         Console.WriteLine("game Saved");
-         Save();
-      }   
-    }
-        public void Save() {
-            // call a saving system save
+        const string defaultSaveFile = "save";
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Load();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                print("Saved");
+                Save();
+            }
+        }
+
+        public void Save()
+        {
             GetComponent<SavingSystem>().Save(defaultSaveFile);
         }
-        public void Load() {
-            // call a saving system load
+
+        public void Load()
+        {
             GetComponent<SavingSystem>().Load(defaultSaveFile);
         }
     }
-
-
 }
