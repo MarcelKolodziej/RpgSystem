@@ -673,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99375261a9ba3e84b9a834981089b4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 844edbc579ffde4488f3983866615990, type: 2}
 --- !u!4 &570246245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9ada23a6ef88d194e832263f906fb0af, type: 3}
@@ -1225,32 +1226,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4904399729703606452, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_ScreenX
-      value: 0.4933774
+      value: 0.4999999
       objectReference: {fileID: 0}
     - target: {fileID: 4904399729703606452, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_ScreenY
-      value: 0.4875026
+      value: 0.4933849
       objectReference: {fileID: 0}
     - target: {fileID: 4904399729703606452, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_DeadZoneHeight
-      value: 0.2664706
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 5584080860306864857, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.002434
+      value: -23.015717
       objectReference: {fileID: 0}
     - target: {fileID: 5584080860306864857, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.286356
+      value: 15.35445
       objectReference: {fileID: 0}
     - target: {fileID: 5584080860306864857, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 186.64651
+      value: 186.49547
       objectReference: {fileID: 0}
     - target: {fileID: 5612484952537521235, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 844edbc579ffde4488f3983866615990, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5612484952537521235, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: handTransform
       value: 
@@ -1261,15 +1262,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8155141456973853842, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.002434
+      value: -23.015717
       objectReference: {fileID: 0}
     - target: {fileID: 8155141456973853842, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.286356
+      value: 15.35445
       objectReference: {fileID: 0}
     - target: {fileID: 8155141456973853842, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 186.64651
+      value: 186.49547
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450172105034855833, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8994745178205113515, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_LocalPosition.z

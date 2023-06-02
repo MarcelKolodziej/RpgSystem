@@ -6,12 +6,13 @@ namespace RPG.Combat {
     
     public class WeaponPickup : MonoBehaviour {
 
-        [SerializeField] Weapons weapon;
+        [SerializeField] Weapons weapon = null;
 
         private void OnTriggerEnter(Collider other) {
             // check if colliding with a player 
-            if (other.tag == "Player") {
-            print("Player detected");
+            if (other.gameObject.tag == "Player") 
+            {
+                print("Player detected");
                 // pickup object 
                 other.GetComponent<Fighter>().EquipWeapon(weapon);
                 // destroy
