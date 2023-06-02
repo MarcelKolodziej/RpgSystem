@@ -4,8 +4,6 @@ using RPG.Core;
 
 namespace RPG.Combat {
     public class Fighter : MonoBehaviour, IAction {
-        [SerializeField] float weaponRange = 2f;
-        [SerializeField] float weaponDamage = 5f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform handTransform = null;
         [SerializeField] Weapons weapon = null;
@@ -48,10 +46,9 @@ namespace RPG.Combat {
                 timeSinceLastAttack = 0f;
             }
         }
-        // Animation event 
-        void Hit() {
+        void Hit(float damage) {
             if(target == null) { return; }
-            target.TakeDamage(weaponDamage);
+            target.TakeDamage(weapon.GetWeaponDamage());
         }
         private void TriggerAttack()
         {
@@ -59,7 +56,7 @@ namespace RPG.Combat {
             _animator.SetTrigger("attack");
         }
         private bool GetIsInRange() {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weapon.GetWeaponRange();
         }
 
         public void Attack(GameObject combatTarget) {

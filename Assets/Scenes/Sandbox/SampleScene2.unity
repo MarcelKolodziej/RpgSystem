@@ -848,6 +848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b504a31fb066f41948b6bbfcb64c97, type: 3}
+--- !u!4 &1263494391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2764833630953588572, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+  m_PrefabInstance: {fileID: 1622950679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1330690999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1069,6 +1074,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3359652742236474086, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 844edbc579ffde4488f3983866615990, type: 2}
+    - target: {fileID: 3359652742236474086, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: WeaponOverride
       value: 
       objectReference: {fileID: 22100000, guid: 51afcf0b6656349409f7076aa44bb544, type: 2}
@@ -1276,7 +1285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580512646, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4729995260501095819, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
       propertyPath: patrolPath
@@ -1434,11 +1443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e4dba57da09e041bdbcceeb199e3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
-  weaponDamage: 5
   timeBetweenAttacks: 1
-  handTransform: {fileID: 0}
-  weapon: {fileID: 0}
+  handTransform: {fileID: 1263494391}
+  weapon: {fileID: 11400000, guid: 844edbc579ffde4488f3983866615990, type: 2}
 --- !u!4 &1928537045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9ada23a6ef88d194e832263f906fb0af, type: 3}
