@@ -7,8 +7,8 @@ namespace RPG.Combat {
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float weaponDamage = 5f;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] Transform handTransform = null;
+        [SerializeField] Weapons weapon = null;
         Health target;
         Animator _animator;
         float timeSinceLastAttack = Mathf.Infinity;
@@ -37,7 +37,8 @@ namespace RPG.Combat {
             }
         }
         private void SpawnWeapon() {
-            Instantiate(weaponPrefab, handTransform);
+            if (weapon == null) return;
+            weapon.Spawn(handTransform, _animator);
         }
         private void AttackBehaviour() {
             transform.LookAt(target.transform);
@@ -52,7 +53,6 @@ namespace RPG.Combat {
             if(target == null) { return; }
             target.TakeDamage(weaponDamage);
         }
-
         private void TriggerAttack()
         {
             _animator.ResetTrigger("stopAttack");
