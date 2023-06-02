@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace RPG.Core
 {
+    [RequireComponent(typeof(PersistentObjectSpawner))]
+
     public class PersistentObjectSpawner : MonoBehaviour
     {
         [SerializeField] GameObject persistentObjectPrefab;
