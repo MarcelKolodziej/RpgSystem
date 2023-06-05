@@ -49,7 +49,6 @@ namespace RPG.Control {
             }
             else
             {
-                //Debug.Log("Patrolling behaviour");
                 PatrollingBehaviour();
             }
 
@@ -64,6 +63,7 @@ namespace RPG.Control {
 
         private void PatrollingBehaviour() {
             Vector3 nextPosition = guardLocation;
+
            // mover.Walking();
 
             if (patrolPath != null) 
@@ -92,6 +92,8 @@ namespace RPG.Control {
         private void CycleWaypoint()
         {
             currentWayPointIndex = patrolPath.GetNextIndex(currentWayPointIndex);
+                Debug.Log("NEXT POINT ");
+
         }
 
 
