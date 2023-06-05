@@ -4,9 +4,13 @@ using RPG.Core;
 
 namespace RPG.Combat {
     public class Fighter : MonoBehaviour, IAction {
+
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapons defaultWeapon = null;
+
+
         Health target;
         Animator _animator;
         float timeSinceLastAttack = Mathf.Infinity;
@@ -37,8 +41,9 @@ namespace RPG.Combat {
         }
         public void EquipWeapon(Weapons weapon) {
             currentWeapon = weapon;
-            weapon.Spawn(handTransform, _animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
         }
+
         private void AttackBehaviour() {
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks) {

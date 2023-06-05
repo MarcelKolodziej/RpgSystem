@@ -16,3 +16,4 @@ MonoBehaviour:
   equpipedPrefab: {fileID: 6676521290224804715, guid: 6ede0ff8790d57242917414e790eeeb3, type: 3}
   weaponRange: 4
   weaponDamage: 10
+  isRightHanded: 1
