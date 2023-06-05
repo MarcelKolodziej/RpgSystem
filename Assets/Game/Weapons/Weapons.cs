@@ -37,6 +37,5 @@ namespace RPG.Combat
         }
 
 
-
     }
 }
