@@ -41,6 +41,7 @@ namespace RPG.Control {
             {
                 timeSinceLastSawPlayer = 0f;
                 AttackBehaviour();
+                print(player.transform.position);
             }
             else if(timeSinceLastSawPlayer < suspictionStateTimer)
             {

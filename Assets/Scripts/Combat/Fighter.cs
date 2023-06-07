@@ -10,7 +10,6 @@ namespace RPG.Combat {
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapons defaultWeapon = null;
 
-
         Health target;
         Animator _animator;
         float timeSinceLastAttack = Mathf.Infinity;
@@ -52,9 +51,28 @@ namespace RPG.Combat {
                 timeSinceLastAttack = 0f;
             }
         }
-        void Hit(float damage) {
+
+        // Animation Event 
+        void Hit() 
+        {
+        //  otherwise just call TakeDamage 
             if(target == null) { return; }
-            target.TakeDamage(currentWeapon.GetWeaponDamage());
+            // check if weapon has a projectile
+            if(currentWeapon.HasProjectile())
+            {
+                // lunch it
+                currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target);
+                print("animation event");
+            }
+            else {
+                target.TakeDamage(currentWeapon.GetWeaponDamage());
+            }
+
+        }
+
+        void Shoot() // Animation event is named diffrently, so we wrap it into Hit function
+        {
+            Hit();
         }
         private void TriggerAttack()
         {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -9,7 +10,7 @@ namespace RPG.Combat
     public class ArrowProjectile : MonoBehaviour
     {
         [SerializeField] float projectileSpeed = 20f;
-        [SerializeField] Transform target = null;
+        Health target = null;
 
         private void Update() {
             moveToTarget(projectileSpeed);
@@ -23,15 +24,21 @@ namespace RPG.Combat
             }
         }
 
+        public void SetTarget(Health target) 
+        { 
+            this.target = target;        
+        }
+
         private Vector3 GetAimLocation()
         {
             CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
             if (targetCapsule == null)
             {
-                return target.position;
+                return target.transform.position;
             }
-            return target.position + Vector3.up * targetCapsule.height / 2;
+            return target.transform.position + Vector3.up * targetCapsule.height / 2;
         }
 
     }
+
 }

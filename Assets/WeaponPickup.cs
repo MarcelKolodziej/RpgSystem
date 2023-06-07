@@ -12,8 +12,6 @@ namespace RPG.Combat {
             // check if colliding with a player 
             if (other.gameObject.tag == "Player") 
             {
-                print("Player detected");
-                // pickup object 
                 other.GetComponent<Fighter>().EquipWeapon(weapon);
                 // destroy
                 Destroy(gameObject);
