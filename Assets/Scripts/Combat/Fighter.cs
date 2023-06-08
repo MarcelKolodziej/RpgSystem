@@ -62,7 +62,7 @@ namespace RPG.Combat {
             {
                 // lunch it
                 currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target);
-                print("animation event");
+//                print("animation event");
             }
             else {
                 target.TakeDamage(currentWeapon.GetWeaponDamage());

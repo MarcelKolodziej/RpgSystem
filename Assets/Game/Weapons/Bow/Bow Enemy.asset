@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow Enemy
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 22100000, guid: bd03dd5c01b90f948ac9fdd3fefc9d37, type: 2}
-  equpipedPrefab: {fileID: 5029172405624957920, guid: dae8cf1835a69a04cbd558b349cef843, type: 3}
+  equpipedPrefab: {fileID: 2322519323926761322, guid: dae8cf1835a69a04cbd558b349cef843, type: 3}
   weaponRange: 20
   weaponDamage: 0
   isRightHanded: 0

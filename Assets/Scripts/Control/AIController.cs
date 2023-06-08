@@ -41,7 +41,7 @@ namespace RPG.Control {
             {
                 timeSinceLastSawPlayer = 0f;
                 AttackBehaviour();
-                print(player.transform.position);
+//                print(player.transform.position);
             }
             else if(timeSinceLastSawPlayer < suspictionStateTimer)
             {
@@ -58,7 +58,7 @@ namespace RPG.Control {
         private void AttackBehaviour()
         {
             fighter.Attack(player);
-            Debug.Log("Attacking player");
+//            Debug.Log("Attacking player");
             // mover.Running();
         }
 

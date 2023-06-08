@@ -19,8 +19,8 @@ namespace RPG.Combat
     
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator) 
         {
-            DestroyOldWeapon(rightHand, leftHand);
             
+            DestroyOldWeapon(rightHand, leftHand);
 
             if (equpipedPrefab != null) 
             {
@@ -33,19 +33,21 @@ namespace RPG.Combat
             }            
         }
 
-        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        private static void DestroyOldWeapon(Transform rightHand, Transform leftHand)
         {
             Transform oldWeapon = rightHand.Find(weaponName);
-            if(oldWeapon == null)
+            Console.WriteLine("pickup" + oldWeapon);
+            if (oldWeapon == null)
             {
                 oldWeapon = leftHand.Find(weaponName);
+                Console.WriteLine("pickup" + oldWeapon);
             }
             if (oldWeapon == null) return;
 
-            oldWeapon.name = "Destroying";
+            oldWeapon.name = "DESTROYING";
             Destroy(oldWeapon.gameObject);
-
         }
+
 
         private Transform GetTransform(Transform rightHand, Transform leftHand)
         {
