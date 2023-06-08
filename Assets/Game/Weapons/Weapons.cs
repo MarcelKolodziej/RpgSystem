@@ -17,13 +17,11 @@ namespace RPG.Combat
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator) 
         {
 
-            if (equpipedPrefab != null)
-            {
+            if (equpipedPrefab != null) {
                 Transform handTransform = GetTransform(rightHand, leftHand);
                 Instantiate(equpipedPrefab, handTransform);
             }
-            if (animatorOverride != null)
-            {
+            if (animatorOverride != null) {
                 animator.runtimeAnimatorController = animatorOverride;
             }            
         }
@@ -44,12 +42,13 @@ namespace RPG.Combat
         public void LunchProjectile(Transform rightHand, Transform leftHand, Health target)
         {
             ArrowProjectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target);
+            projectileInstance.SetTarget(target, weaponDamage);
         }
 
-          public float GetWeaponDamage() {
+        public float GetWeaponDamage() {
             return weaponDamage;
         }
+            
         public float GetWeaponRange() {
             return weaponRange;
         }

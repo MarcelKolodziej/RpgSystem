@@ -67,10 +67,9 @@ namespace RPG.Combat {
             else {
                 target.TakeDamage(currentWeapon.GetWeaponDamage());
             }
-
         }
 
-        void Shoot() // Animation event is named diffrently, so we wrap it into Hit function
+        void Shoot() // Animation event is named diffrently in prefabs, so we wrap it into Hit function
         {
             Hit();
         }
