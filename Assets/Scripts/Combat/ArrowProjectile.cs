@@ -12,18 +12,25 @@ namespace RPG.Combat
         [SerializeField] float projectileSpeed = 20f;
         Health target = null;
         float damage = 0f;
-        private void Update() {
-            moveToTarget(projectileSpeed);
-        }
 
-        private void moveToTarget(float projectileSpeed) {
-            if(target == null) return;
-             {
-                    transform.LookAt(GetAimLocation());
-                    transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+        [SerializeField] private bool isHoming = true;
+        
+        private void Start() {
+                transform.LookAt(GetAimLocation());
+        }
+        private void Update()
+            {
+                if (target is null) return;
+                if (isHoming)
+                {
+                    if (!target.IsDead())
+                    {
+                        transform.LookAt(GetAimLocation());
+                    }
+                }
+                transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);      
             }
-        }
-
+     
         public void SetTarget(Health target, float damage) 
         { 
             this.target = target;   
@@ -42,9 +49,8 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other) {
             if(other.GetComponent<Health>() != target) return; // procces if our target, otherwise return
-            
+                if(target.isDead) return;
                 target.TakeDamage(damage);
-                // print(damage);
                 Destroy(gameObject);
 
         }

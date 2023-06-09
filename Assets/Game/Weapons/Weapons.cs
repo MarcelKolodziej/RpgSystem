@@ -21,6 +21,7 @@ namespace RPG.Combat
         {
             
             DestroyOldWeapon(rightHand, leftHand);
+            
 
             if (equpipedPrefab != null) 
             {
