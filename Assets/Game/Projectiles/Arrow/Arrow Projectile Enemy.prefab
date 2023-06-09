@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: isHoming
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1985976124, guid: 1088086de332f264b848ad877b771c29, type: 3}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 6020326558953276471, guid: 2c72baeffcfe7004a995ed38353b9aff, type: 3}
     - target: {fileID: 1108840599532874534, guid: 1088086de332f264b848ad877b771c29, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.003

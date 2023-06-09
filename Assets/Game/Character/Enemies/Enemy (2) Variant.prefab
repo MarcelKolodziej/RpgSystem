@@ -16,6 +16,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f43f6573ccd6b274e97d8f02dfa79587, type: 2}
     - target: {fileID: 630868813215565500, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 1689290811959513166}
+    - target: {fileID: 630868813215565500, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
       propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 1689290811959455782}
@@ -112,5 +116,10 @@ PrefabInstance:
 --- !u!4 &1689290811959455782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6801340409477128917, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
+  m_PrefabInstance: {fileID: 5265453545725383411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1689290811959513166 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6801340409477186237, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
   m_PrefabInstance: {fileID: 5265453545725383411}
   m_PrefabAsset: {fileID: 0}

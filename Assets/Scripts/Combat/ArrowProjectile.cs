@@ -14,6 +14,8 @@ namespace RPG.Combat
         float damage = 0f;
 
         [SerializeField] private bool isHoming = true;
+
+        [SerializeField] private GameObject impactEffect = null;
         
         private void Start() {
                 transform.LookAt(GetAimLocation());
@@ -50,6 +52,9 @@ namespace RPG.Combat
         private void OnTriggerEnter(Collider other) {
             if(other.GetComponent<Health>() != target) return; // procces if our target, otherwise return
                 if(target.isDead) return;
+                if (impactEffect != null) {
+                Instantiate(impactEffect, GetAimLocation(), transform.rotation);
+                }
                 target.TakeDamage(damage);
                 Destroy(gameObject);
 
