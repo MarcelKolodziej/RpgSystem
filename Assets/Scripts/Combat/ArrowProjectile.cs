@@ -10,13 +10,15 @@ namespace RPG.Combat
     public class ArrowProjectile : MonoBehaviour
     {
         [SerializeField] float projectileSpeed = 20f;
+        [SerializeField] private bool isHoming = true;
+        [SerializeField] private GameObject impactEffect = null;
+        [SerializeField] private float lifeTime = 5f;
         Health target = null;
         float damage = 0f;
 
-        [SerializeField] private bool isHoming = true;
+        [SerializeField] private GameObject[] destroyOnHit;
+        [SerializeField] private float lifeTimeAfterImpact = 5f;
 
-        [SerializeField] private GameObject impactEffect = null;
-        
         private void Start() {
                 transform.LookAt(GetAimLocation());
         }
@@ -36,7 +38,9 @@ namespace RPG.Combat
         public void SetTarget(Health target, float damage) 
         { 
             this.target = target;   
-            this.damage = damage;     
+            this.damage = damage;
+
+            Destroy(gameObject, lifeTime);     
         }
 
         private Vector3 GetAimLocation()
@@ -49,14 +53,24 @@ namespace RPG.Combat
             return target.transform.position + Vector3.up * targetCapsule.height / 2;
         }
 
-        private void OnTriggerEnter(Collider other) {
+        private void OnTriggerEnter(Collider other) 
+        {
             if(other.GetComponent<Health>() != target) return; // procces if our target, otherwise return
-                if(target.isDead) return;
-                if (impactEffect != null) {
+            if(target.isDead) return;
+            target.TakeDamage(damage);
+
+            if (impactEffect != null) 
+            {
                 Instantiate(impactEffect, GetAimLocation(), transform.rotation);
-                }
-                target.TakeDamage(damage);
-                Destroy(gameObject);
+            }
+            
+            foreach (GameObject toDestroy in destroyOnHit) {
+                Destroy(toDestroy);
+            }
+
+            Destroy(gameObject, lifeTimeAfterImpact);
+
+
 
         }
 

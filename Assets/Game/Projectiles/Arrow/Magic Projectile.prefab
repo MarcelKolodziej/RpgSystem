@@ -4878,9 +4878,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1985976124, guid: 1088086de332f264b848ad877b771c29, type: 3}
+      propertyPath: lifeTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985976124, guid: 1088086de332f264b848ad877b771c29, type: 3}
       propertyPath: impactEffect
       value: 
       objectReference: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
+    - target: {fileID: 1985976124, guid: 1088086de332f264b848ad877b771c29, type: 3}
+      propertyPath: destroyOnHit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985976124, guid: 1088086de332f264b848ad877b771c29, type: 3}
+      propertyPath: destroyOnHit.Array.data[0]
+      value: 
+      objectReference: {fileID: 7962557315880995468}
     - target: {fileID: 1108840599532874534, guid: 1088086de332f264b848ad877b771c29, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.023
@@ -5045,3 +5057,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+--- !u!1 &7962557315880995468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 182542, guid: 5cd5599e01f32bd418f20a3b9eac1c57, type: 3}
+  m_PrefabInstance: {fileID: 7962557315880878978}
+  m_PrefabAsset: {fileID: 0}
