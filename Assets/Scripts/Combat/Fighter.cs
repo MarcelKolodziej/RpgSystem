@@ -1,22 +1,26 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.Combat {
-    public class Fighter : MonoBehaviour, IAction {
+    public class Fighter : MonoBehaviour, IAction, ISaveable  {
 
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapons defaultWeapon = null;
-
-        Health target;
         Animator _animator;
+        Health target;
         float timeSinceLastAttack = Mathf.Infinity;
-        Weapons currentWeapon;
+        Weapons currentWeapon = null;
 
-        private void Start() {
-            EquipWeapon(defaultWeapon);
+        private void Start() 
+        {
+        if(currentWeapon == null) 
+            {
+                EquipWeapon(defaultWeapon);
+            }
         }
         private void Awake() {
             _animator = GetComponent<Animator>();
@@ -51,18 +55,22 @@ namespace RPG.Combat {
                 timeSinceLastAttack = 0f;
             }
         }
+        private void TriggerAttack()
+        {
+            _animator.ResetTrigger("stopAttack");
+            _animator.SetTrigger("attack");
+        }
 
         // Animation Event 
         void Hit() 
         {
-        //  otherwise just call TakeDamage 
             if(target == null) { return; }
-            // check if weapon has a projectile
+        // check if weapon has a projectile
             if(currentWeapon.HasProjectile())
             {
                 // lunch it
                 currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target);
-//                print("animation event");
+        // print("animation event");
             }
             else {
                 target.TakeDamage(currentWeapon.GetWeaponDamage());
@@ -72,11 +80,6 @@ namespace RPG.Combat {
         void Shoot() // Animation event is named diffrently in prefabs, so we wrap it into Hit function
         {
             Hit();
-        }
-        private void TriggerAttack()
-        {
-            _animator.ResetTrigger("stopAttack");
-            _animator.SetTrigger("attack");
         }
         private bool GetIsInRange() {
             return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetWeaponRange();
@@ -106,8 +109,17 @@ namespace RPG.Combat {
             _animator.SetTrigger("stopAttack");
         }
 
+        public object CaptureState()
+        {
+            return currentWeapon.name;
+        }
 
-
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            Weapons weapon = Resources.Load<Weapons>(weaponName);
+            EquipWeapon(weapon);
+        }
     }
     
 }

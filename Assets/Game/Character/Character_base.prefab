@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01fa810c97f92214b82934d15500a3a9, type: 2}
+  - {fileID: 2100000, guid: 11c57753a8c658947ab4e6289065ff3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1
-  handTransform: {fileID: 0}
-  weapon: {fileID: 0}
+  rightHandTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  defaultWeapon: {fileID: 0}
 --- !u!114 &6865406217587308239
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,29 +1,28 @@
 using System;
+using RPG.SceneManagement;
 using UnityEngine;
 
 namespace RPG.Core
 {
-    [RequireComponent(typeof(PersistentObjectSpawner))]
-
-    public class PersistentObjectSpawner : MonoBehaviour
+    
+    public class PeristentObjectSpawner : MonoBehaviour
     {
         [SerializeField] GameObject persistentObjectPrefab;
 
-        static bool hasSpawned = false; // static lives, remeber a value, with application rather then script.
+        static bool hasSpawned = false;
 
         private void Awake() {
             if (hasSpawned) return;
 
-            SpawnPersistenObjects();
+            SpawnPersistentObjects();
 
             hasSpawned = true;
         }
 
-        private void SpawnPersistenObjects()
+        private void SpawnPersistentObjects()
         {
             GameObject persistentObject = Instantiate(persistentObjectPrefab);
             DontDestroyOnLoad(persistentObject);
         }
     }
-
 }

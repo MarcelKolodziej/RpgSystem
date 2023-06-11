@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524986458148225269, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
       propertyPath: m_Name
-      value: Enemy (2) Variant
+      value: Enemy Archer
       objectReference: {fileID: 0}
     - target: {fileID: 6524986458148225269, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
       propertyPath: m_TagString
@@ -113,6 +113,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
+--- !u!1 &1414075886367445510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524986458148225269, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
+  m_PrefabInstance: {fileID: 5265453545725383411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5166244032097962762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414075886367445510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bfd0b5600e6444eae7b85b8d323dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  characterClass: 3
 --- !u!4 &1689290811959455782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6801340409477128917, guid: 3778d90c82845f948a1ae86a34bdd5ad, type: 3}
