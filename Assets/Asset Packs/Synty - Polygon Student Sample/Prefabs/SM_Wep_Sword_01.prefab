@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 489998}
   - component: {fileID: 3383498}
   - component: {fileID: 2386212}
-  - component: {fileID: 1173316541160875596}
   m_Layer: 0
   m_Name: SM_Wep_Sword_01
   m_TagString: Untagged
@@ -84,15 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1173316541160875596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99375261a9ba3e84b9a834981089b4e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
