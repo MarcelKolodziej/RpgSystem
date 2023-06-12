@@ -62,22 +62,26 @@ namespace RPG.Combat {
             _animator.SetTrigger("attack");
         }
 
-        // Animation Event 
+                // Animation Event 
         void Hit() 
         {
             if(target == null) { return; }
-        // check if weapon has a projectile
+                // check if weapon has a projectile
             if(currentWeapon.HasProjectile())
             {
                 // lunch it
                 currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target);
-        // print("animation event");
+                // print("animation event");
             }
             else {
                 target.TakeDamage(currentWeapon.GetWeaponDamage());
             }
         }
 
+        public Health GetTarget()
+        {
+            return target;
+        } 
         void Shoot() // Animation event is named diffrently in prefabs, so we wrap it into Hit function
         {
             Hit();
