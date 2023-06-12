@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using RPG.Movement;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Attribiutes;
 
 namespace RPG.Control {
     public class PlayerController : MonoBehaviour {

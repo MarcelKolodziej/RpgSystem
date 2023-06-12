@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RPG.Attribiutes;
 using RPG.Core;
 using UnityEngine;
 

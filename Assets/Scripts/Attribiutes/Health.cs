@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Core;
 
-namespace RPG.Core {
+namespace RPG.Attribiutes {
     public class Health : MonoBehaviour, ISaveable {
 
         [SerializeField] float healthPoints = 100f;
@@ -18,9 +20,20 @@ namespace RPG.Core {
                  Death();
              }
         } 
+
+        public float GetPercentage()
+        {
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth());
+        }
+
         public bool IsDead() {
             return isDead;
         }
+
+        private void Start() {
+            healthPoints = GetComponent<BaseStats>().GetHealth();
+        }
+
 
         public void Death() {
                 if (isDead) return;

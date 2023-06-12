@@ -731,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1414075886367445506, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.61105
+      value: 60.32
       objectReference: {fileID: 0}
     - target: {fileID: 1414075886367445506, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1414075886367445506, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 33.246178
+      value: 25.48
       objectReference: {fileID: 0}
     - target: {fileID: 1414075886367445506, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -772,6 +772,14 @@ PrefabInstance:
     - target: {fileID: 1414075886367445510, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: m_Name
       value: Enemy Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: progression
+      value: 
+      objectReference: {fileID: 11400000, guid: 62a385bdc0781d5428fadf8b0ce22722, type: 2}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: currentLevel
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
@@ -1321,6 +1329,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2416820501513256478, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: progression
+      value: 
+      objectReference: {fileID: 11400000, guid: 62a385bdc0781d5428fadf8b0ce22722, type: 2}
+    - target: {fileID: 2416820501513256478, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: currentLevel
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2764833630395926868, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1724,8 +1740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bfd0b5600e6444eae7b85b8d323dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  currentLevel: 2
   characterClass: 1
+  progression: {fileID: 11400000, guid: 62a385bdc0781d5428fadf8b0ce22722, type: 2}
 --- !u!1001 &2042622181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1789,6 +1806,18 @@ PrefabInstance:
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 43b9e29569ca0354595e2c8208958aac, type: 2}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: progression
+      value: 
+      objectReference: {fileID: 11400000, guid: 62a385bdc0781d5428fadf8b0ce22722, type: 2}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: currentLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: characterClass
       value: 2
