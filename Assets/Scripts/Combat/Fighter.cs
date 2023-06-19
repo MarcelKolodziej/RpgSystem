@@ -70,11 +70,11 @@ namespace RPG.Combat {
             if(currentWeapon.HasProjectile())
             {
                 // lunch it
-                currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target);
+                currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target, gameObject);
                 // print("animation event");
             }
             else {
-                target.TakeDamage(currentWeapon.GetWeaponDamage());
+                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
             }
         }
 
