@@ -42,13 +42,6 @@ namespace RPG.Movement {
             navMeshAgent.isStopped = true;
         }
 
-        // public void Running() {
-        //     navMeshAgent.speed = 5f;
-        // }
-
-        //  public void Walking() {
-        //     navMeshAgent.speed = 2f;
-        // }
         private void UpdateAnimator() {
             Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);

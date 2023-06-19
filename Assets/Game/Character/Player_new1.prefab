@@ -149,9 +149,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bfd0b5600e6444eae7b85b8d323dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 1
+  currentLevel: 1
   characterClass: 0
   progression: {fileID: 11400000, guid: 62a385bdc0781d5428fadf8b0ce22722, type: 2}
+--- !u!114 &2885614668690145320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524986458148225269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57193ac931ccb8141b71c5bd7a0cff07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiancePoints: 0
 --- !u!1001 &3487981037897228702
 PrefabInstance:
   m_ObjectHideFlags: 0

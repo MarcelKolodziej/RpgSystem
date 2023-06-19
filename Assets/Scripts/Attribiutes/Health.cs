@@ -16,14 +16,13 @@ namespace RPG.Attribiutes
         private const string Dead = "dead";
         public bool isDead = false;
         private void Start() {
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
         public void TakeDamage(GameObject instigator, float damage) {
              healthPoints = MathF.Max(healthPoints - damage, 0);
              if (healthPoints == 0) {
                  Death();
                  AwardExperiance(instigator);   
-
              }
         }
 
@@ -32,12 +31,12 @@ namespace RPG.Attribiutes
            Experiance experiance =  instigator.GetComponent<Experiance>();
            if (experiance == null) return;
 
-           experiance.GainExperianceReward(GetComponent<BaseStats>().GetExperianceReward());
+           experiance.GainExperianceReward(GetComponent<BaseStats>().GetStat(Stat.ExpieranceReward));
         }
 
         public float GetPercentage()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth());
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         public bool IsDead() {
