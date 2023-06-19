@@ -16,8 +16,6 @@ namespace RPG.Combat
         [SerializeField] ArrowProjectile projectile = null;
 
         const string weaponName = "Weapon";
-
-    
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator) 
         {
             
@@ -72,10 +70,10 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        public void LunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        public void LunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
         {
             ArrowProjectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target, weaponDamage);
+            projectileInstance.SetTarget(target, instigator, weaponDamage);
         }
 
         public float GetWeaponDamage() {

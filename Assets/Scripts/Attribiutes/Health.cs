@@ -7,33 +7,41 @@ using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
 
-namespace RPG.Attribiutes {
+namespace RPG.Attribiutes 
+{
     public class Health : MonoBehaviour, ISaveable {
 
         [SerializeField] float healthPoints = 100f;
         Animator _animator;
         private const string Dead = "dead";
         public bool isDead = false;
-        public void TakeDamage(float damage) {
+        private void Start() {
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+        public void TakeDamage(GameObject instigator, float damage) {
              healthPoints = MathF.Max(healthPoints - damage, 0);
              if (healthPoints == 0) {
                  Death();
+                 AwardExperiance(instigator);   
              }
-        } 
+        }
+
+        private void AwardExperiance(GameObject instigator)
+        {
+           Experiance experiance =  instigator.GetComponent<Experiance>();
+           if (experiance == null) return;
+
+           experiance.GainExperianceReward(GetComponent<BaseStats>().GetStat(Stat.ExpieranceReward));
+        }
 
         public float GetPercentage()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth());
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         public bool IsDead() {
             return isDead;
         }
-
-        private void Start() {
-            healthPoints = GetComponent<BaseStats>().GetHealth();
-        }
-
 
         public void Death() {
                 if (isDead) return;
@@ -43,12 +51,10 @@ namespace RPG.Attribiutes {
                 GetComponent<Animator>().SetTrigger(Dead);
                 GetComponent<ActionScheduler>().CancelCurrentAction();
             }
-
         public object CaptureState()
         {
             return healthPoints;
         }
-
         public void RestoreState(object state)
         {
             healthPoints = (float)state;
@@ -58,5 +64,5 @@ namespace RPG.Attribiutes {
              }
         }
     }
-}
 
+}
