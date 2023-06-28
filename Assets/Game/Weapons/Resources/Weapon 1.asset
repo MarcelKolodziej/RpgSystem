@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 724db26ffd31b204c8f1c4d007f77a07, type: 3}
-  m_Name: Sword
-  m_EditorClassIdentifier: Assembly-CSharp:RPG.Combat:Weapon
-  animatorOverride: {fileID: 22100000, guid: 51afcf0b6656349409f7076aa44bb544, type: 2}
-  equpipedPrefab: {fileID: 6676521290224804715, guid: 6ede0ff8790d57242917414e790eeeb3, type: 3}
-  weaponRange: 3
-  weaponDamage: 30
+  m_Name: Weapon 1
+  m_EditorClassIdentifier: 
+  animatorOverride: {fileID: 0}
+  equpipedPrefab: {fileID: 0}
+  weaponRange: 2
+  weaponDamage: 5
   isRightHanded: 1
   projectile: {fileID: 0}

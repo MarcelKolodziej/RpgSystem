@@ -8,16 +8,40 @@ namespace RPG.Stats
     public class BaseStats : MonoBehaviour
     {
         [Range(1, 99)]
-        [SerializeField] int currentLevel = 1;
+        [SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
-        public float GetStat(Stat stat)
-        {
-            return progression.GetStat(stat, characterClass, currentLevel);
+        private void Update() {
+            if (gameObject.tag == "Player")
+            {
+              print(GetLevel());
+            }
         }
 
+        public float GetStat(Stat stat)
+        {
+            return progression.GetStat(stat, characterClass, GetLevel());
+        }
+        public int GetLevel()
+        {   
+            Experiance experiance = GetComponent<Experiance>();
+            if (experiance == null) return startingLevel;
 
+            float currentXP = GetComponent<Experiance>().GetPoints();
+
+            int penultimateLevel = progression.GetLevels(Stat.ExperianceToLevelUp, characterClass);
+            for (int level = 1; level <= penultimateLevel; level++)
+            {
+                float XPToLevelUP = progression.GetStat(Stat.ExperianceToLevelUp, characterClass, level);
+                if (XPToLevelUP > currentXP)
+                {
+                    return level;
+                }
+            }
+
+            return penultimateLevel + 1;            
+                
+        }
     }
-
 }

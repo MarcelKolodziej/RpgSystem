@@ -97,8 +97,6 @@ namespace RPG.Control {
                 Debug.Log("NEXT POINT ");
 
         }
-
-
         private void SuspicionBehaviour()
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
@@ -108,7 +106,6 @@ namespace RPG.Control {
                 float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
                 return distanceToPlayer < chaseDistance;
             }
-
 
         // Called by Unity, when selected
         private void OnDrawGizmosSelected() {
