@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 namespace RPG.Stats 
 {
@@ -11,24 +12,57 @@ namespace RPG.Stats
         [SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
+        int currentLevel = 0;
+        public event Action onLevelUp;
 
-        private void Update() {
-            if (gameObject.tag == "Player")
+
+        [SerializeField] private GameObject levelup_Particle; 
+
+        private void Start() 
+        {
+            currentLevel = CalculateLevel();
+            Experience experiance = GetComponent<Experience>();
+            if (experiance != null)
             {
-              print(GetLevel());
+                experiance.onExperianceGained += UpdateLevel;
             }
+
+        }
+        private void PlayParticle()
+        {
+            Instantiate(levelup_Particle, transform);
+        }
+        private void UpdateLevel() 
+        {
+           int newLevel = CalculateLevel();
+           if (newLevel > currentLevel)
+           {
+                currentLevel = newLevel;
+                print("Levelling up!");
+                PlayParticle();
+           }
         }
 
         public float GetStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, GetLevel());
         }
+
         public int GetLevel()
+        {
+            if (currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
+
+            return currentLevel;
+        }
+        public int CalculateLevel()
         {   
-            Experiance experiance = GetComponent<Experiance>();
+            Experience experiance = GetComponent<Experience>();
             if (experiance == null) return startingLevel;
 
-            float currentXP = GetComponent<Experiance>().GetPoints();
+            float currentXP = GetComponent<Experience>().GetPoints();
 
             int penultimateLevel = progression.GetLevels(Stat.ExperianceToLevelUp, characterClass);
             for (int level = 1; level <= penultimateLevel; level++)

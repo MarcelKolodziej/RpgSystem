@@ -10,15 +10,15 @@ namespace RPG.Stats
     
     public class ExperianceDisplay : MonoBehaviour
     {
-       Experiance experiance; 
+       Experience experience; 
 
        private void Awake() {
-            experiance = GameObject.FindWithTag("Player").GetComponent<Experiance>();
+            experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
        }       
 
         private void Update()
         {
-            GetComponent<Text>().text = String.Format("{0:0}", experiance.GetPoints());
+            GetComponent<Text>().text = String.Format("{0:0}", experience.GetPoints());
         }
     }
 }

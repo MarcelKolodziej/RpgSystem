@@ -7,13 +7,16 @@ using RPG.Saving;
 
 namespace RPG.Stats
 {
-    public class Experiance : MonoBehaviour, ISaveable
+    public class Experience : MonoBehaviour, ISaveable
     {
         [SerializeField] float experiancePoints = 0;
 
-        public void GainExperianceReward(float experiance)
+        public event Action onExperianceGained;
+
+        public void GainExperianceReward(float experience)
         {
-            experiancePoints += experiance;
+            experiancePoints += experience;
+            onExperianceGained();
         }
         public object CaptureState()
         {
