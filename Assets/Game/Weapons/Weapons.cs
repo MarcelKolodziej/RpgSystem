@@ -18,9 +18,7 @@ namespace RPG.Combat
         const string weaponName = "Weapon";
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator) 
         {
-            
             DestroyOldWeapon(rightHand, leftHand);
-            
 
             if (equpipedPrefab != null) 
             {
@@ -70,7 +68,7 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        public void LunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
+        public void LunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
             ArrowProjectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
             projectileInstance.SetTarget(target, instigator, weaponDamage);

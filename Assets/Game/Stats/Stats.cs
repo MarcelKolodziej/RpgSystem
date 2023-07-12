@@ -8,6 +8,8 @@ namespace RPG.Stats
     public enum Stat
     {
         Health,
-        ExpieranceReward
+        ExpieranceReward,
+        ExperianceToLevelUp,
+        WeaponDamage,
     }
 }
