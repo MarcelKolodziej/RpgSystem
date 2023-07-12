@@ -14,8 +14,6 @@ namespace RPG.Stats
         [SerializeField] Progression progression = null;
         int currentLevel = 0;
         public event Action onLevelUp;
-
-
         [SerializeField] private GameObject levelup_Particle; 
 
         private void Start() 
@@ -26,7 +24,6 @@ namespace RPG.Stats
             {
                 experiance.onExperianceGained += UpdateLevel;
             }
-
         }
         private void PlayParticle()
         {
@@ -40,6 +37,7 @@ namespace RPG.Stats
                 currentLevel = newLevel;
                 print("Levelling up!");
                 PlayParticle();
+                onLevelUp();
            }
         }
 

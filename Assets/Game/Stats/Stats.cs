@@ -10,5 +10,6 @@ namespace RPG.Stats
         Health,
         ExpieranceReward,
         ExperianceToLevelUp,
+        WeaponDamage,
     }
 }

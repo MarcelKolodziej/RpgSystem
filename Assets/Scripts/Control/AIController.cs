@@ -59,7 +59,7 @@ namespace RPG.Control {
         private void AttackBehaviour()
         {
             fighter.Attack(player);
-//            Debug.Log("Attacking player");
+            // Debug.Log("Attacking player");
             // mover.Running();
         }
 

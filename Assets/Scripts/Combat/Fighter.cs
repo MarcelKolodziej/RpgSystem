@@ -3,6 +3,8 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Attribiutes;
+using RPG.Stats;
+using Unity.VisualScripting;
 
 namespace RPG.Combat {
     public class Fighter : MonoBehaviour, IAction, ISaveable  {
@@ -66,15 +68,17 @@ namespace RPG.Combat {
         void Hit() 
         {
             if(target == null) { return; }
-                // check if weapon has a projectile
-            if(currentWeapon.HasProjectile())
+            // check if weapon has a projectile
+            
+            float damage = GetComponent<BaseStats>().GetStat(Stat.WeaponDamage);
+            if (currentWeapon.HasProjectile())
             {
                 // lunch it
-                currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target, gameObject);
+                currentWeapon.LunchProjectile(leftHandTransform, rightHandTransform, target, gameObject, damage);
                 // print("animation event");
             }
             else {
-                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
+                target.TakeDamage(gameObject, damage);
             }
         }
 

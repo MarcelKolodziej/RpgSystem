@@ -26,11 +26,22 @@ namespace RPG.Attribiutes
             }
         }
         public void TakeDamage(GameObject instigator, float damage) {
+            print(gameObject.name + " took damage " +  damage);
              healthPoints = MathF.Max(healthPoints - damage, 0);
              if (healthPoints == 0) {
                  Death();
                  AwardExperiance(instigator);   
              }
+        }
+
+        public float GetHealthPoints() 
+         {
+            return healthPoints;
+        }
+
+        public float GetMaxHealthPoints()
+         {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
         private void RegenerateHealth()
         {
