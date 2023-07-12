@@ -118,10 +118,16 @@ namespace RPG.Combat {
             _animator.ResetTrigger("attack");
             _animator.SetTrigger("stopAttack");
         }
-        public IEnumerable<float> GetAdditiveModifier(Stat stat) {
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat) {
             if (stat == Stat.WeaponDamage) {
 
                 yield return currentWeapon.GetWeaponDamage();
+            }
+        }
+        public IEnumerable<float> GetPrecentageModifiers(Stat stat) {
+            if (stat == Stat.WeaponDamage) {
+
+                yield return currentWeapon.GetPercentageBonus();
             }
         }
 

@@ -12,6 +12,7 @@ namespace RPG.Combat
         [SerializeField] GameObject equpipedPrefab = null;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] float percentageBonus = 0f;
         [SerializeField] bool isRightHanded = true;
         [SerializeField] ArrowProjectile projectile = null;
 
@@ -74,11 +75,16 @@ namespace RPG.Combat
             projectileInstance.SetTarget(target, instigator, weaponDamage);
         }
 
-        public float GetWeaponDamage() {
+        public float GetWeaponDamage()
+         {
             return weaponDamage;
         }
-            
-        public float GetWeaponRange() {
+           public float GetPercentageBonus()
+            {
+                return percentageBonus;
+            }
+        public float GetWeaponRange()
+        {
             return weaponRange;
         }
 

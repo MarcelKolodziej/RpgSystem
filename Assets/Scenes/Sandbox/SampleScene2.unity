@@ -1397,9 +1397,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2416820501513256478, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416820501513256478, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: levelup_Particle
       value: 
       objectReference: {fileID: 7481326330481150739, guid: 3dd30e02b92325b48b18d08f7e342006, type: 3}
+    - target: {fileID: 2416820501513256478, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2764833630395926868, guid: c1f5a3649aa42f2488c5fb745bdd5a1b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1877,6 +1885,10 @@ PrefabInstance:
     - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
       propertyPath: characterClass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166244032097962762, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
+      propertyPath: shouldUseModifiers
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c28c8e7487321a4fb3834fa28034d89, type: 3}
