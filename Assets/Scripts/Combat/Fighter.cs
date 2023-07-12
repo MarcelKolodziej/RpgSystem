@@ -5,9 +5,10 @@ using RPG.Saving;
 using RPG.Attribiutes;
 using RPG.Stats;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 namespace RPG.Combat {
-    public class Fighter : MonoBehaviour, IAction, ISaveable  {
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider  {
 
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -117,6 +118,12 @@ namespace RPG.Combat {
             _animator.ResetTrigger("attack");
             _animator.SetTrigger("stopAttack");
         }
+        public IEnumerable<float> GetAdditiveModifier(Stat stat) {
+            if (stat == Stat.WeaponDamage) {
+
+                yield return currentWeapon.GetWeaponDamage();
+            }
+        }
 
         public object CaptureState()
         {
@@ -129,6 +136,7 @@ namespace RPG.Combat {
             Weapons weapon = UnityEngine.Resources.Load<Weapons>(weaponName);
             EquipWeapon(weapon);
         }
+
     }
     
 }
